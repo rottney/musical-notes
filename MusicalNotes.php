@@ -3,8 +3,13 @@
     // Validate input format
     $input = trim(fgets(STDIN));
     if (!preg_match("/[A-G]{1}[#]?[0-8]{1}/", $input)) {
-        echo "Please enter note in the format:\n\tC0, G#5, etc.\n\n";
-        echo "Do not use flats (b), and only use octaves 0 - 8.";
+        echo "Please enter note in the format:\n\tC0, G#5, etc.\n\n"
+            . "Do not use flats (b), and only use octaves 0 - 8.";
+    }
+
+    elseif (preg_match("/[BE]{1}[#]{1}[0-8]{1}/", $input)) {
+        echo substr($input, 0, -1) . " is not a note.  "
+            . "Please enter a valid note!";
     }
 
     // If input is valid, calculate frequency
